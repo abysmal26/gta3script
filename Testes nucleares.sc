@@ -1,4 +1,4 @@
-// Copyright RitzyDevelopment Global Group LLC 2021
+// Copyright RitzyDevelopment Global Group LLC 2021 
 
 SCRIPT_START
 {
