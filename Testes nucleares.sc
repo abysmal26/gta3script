@@ -67,7 +67,7 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "Vida regenerada!" 1000
         ENDIF
 
-        // Noclip (arrumar)
+        // Noclip
         IF tdm = 2 // Verifica se a variavel 'tdm' é igual a 2
             WHILE IS_KEY_PRESSED VK_TAB
                 WAIT 0
@@ -120,7 +120,7 @@ SCRIPT_START
                     WAIT 0
 
                     GET_CHAR_COORDINATES scplayer (x y z)
-                    z -= 1.0
+                    z -= 2.0
                     SET_CHAR_COORDINATES scplayer (x y z)
                 ENDWHILE
             ENDWHILE
