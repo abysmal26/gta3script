@@ -17,11 +17,11 @@ SCRIPT_START
     // LE O .INI \\
 
     // Le o arquivo 'Config.ini'
-    READ_INT_FROM_INI_FILE "modloader\My Scripts\Config.ini" "config" "tdm" tdm
+    READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
 
     // Verifica se o arquivo foi lido
-    IF NOT READ_INT_FROM_INI_FILE "modloader\My Scripts\Config.ini" "config" "tdm" tdm
-        PRINT_FORMATTED_NOW "Não fou possivel ler 'tdm' no arquivo 'modloader\My Scripts\Config.ini'" 7000
+    IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
+        PRINT_FORMATTED_NOW "Não fou possivel ler 'tdm' no arquivo 'Config.ini'" 7000
     ENDIF
 
     // ENQUANTO SIM \\
