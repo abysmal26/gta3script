@@ -2,34 +2,22 @@
 
 SCRIPT_START
 {
-    // VARIAVEIS \\
     LVAR_INT scplayer numero tdm
     LVAR_FLOAT x y z
 
-    // SCPLAYER \\
-
     GET_PLAYER_CHAR 0 scplayer
-
-    // MENSAGEM DE INICIO \\
 
     PRINT_FORMATTED_NOW "Hello World Working" 5000
 
-    // LE O .INI \\
-
-    // Le o arquivo 'Config.ini'
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
-
-    // Verifica se o arquivo foi lido
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
         PRINT_FORMATTED_NOW "Não fou possivel ler 'tdm' no arquivo 'Config.ini'" 7000
     ENDIF
 
-    // ENQUANTO SIM \\
     WHILE TRUE
         WAIT 0
 
-        // Mostrar cordenadas ao pressionar TAB
-        IF tdm = 1 // Verifica se a variavel 'tdm' é igual a 1
+        IF tdm = 1 
             WAIT 0
 
             WHILE IS_KEY_PRESSED VK_TAB
@@ -40,7 +28,6 @@ SCRIPT_START
             ENDWHILE
         ENDIF
 
-        // Mostrar um numero na tela
         WHILE IS_KEY_PRESSED VK_KEY_T
             WAIT 0
 
@@ -61,14 +48,12 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "%i" 0001 (numero)
         ENDWHILE
 
-        // Regenerar vida
         IF TEST_CHEAT VIDA
             SET_CHAR_HEALTH scplayer 5000
             PRINT_FORMATTED_NOW "Vida regenerada!" 1000
         ENDIF
 
-        // Noclip
-        IF tdm = 2 // Verifica se a variavel 'tdm' é igual a 2
+        IF tdm = 2
             WHILE IS_KEY_PRESSED VK_TAB
                 WAIT 0
 
@@ -125,6 +110,25 @@ SCRIPT_START
                 ENDWHILE
             ENDWHILE
         ENDIF
+
+        IF IS_KEY_PRESSED VK_END
+            CLEO_CALL get_closest_road 0 (scplayer) (x y z)
+            PRINT_FORMATTED_NOW "A coord da rua mais proxima eh: %.3f %.3f %.3f" 1 (x y z)
+            DRAW_CORONA (x y z) (1.0) (CORONATYPE_SHINYSTAR, FLARETYPE_NONE) (255 0 0)
+        ENDIF
+
     ENDWHILE
 }
 SCRIPT_END
+
+{
+    LVAR_INT char // In
+
+    LVAR_FLOAT char_x char_y char_z
+    LVAR_FLOAT node_x node_y node_z
+
+    get_closest_road:
+    GET_CHAR_COORDINATES char (char_x char_y char_z)
+    GET_CLOSEST_CAR_NODE (char_x char_y char_z) (node_x node_y node_z)
+    CLEO_RETURN 0 (node_x node_y node_z)
+}
