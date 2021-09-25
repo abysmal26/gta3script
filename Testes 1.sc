@@ -11,7 +11,7 @@ SCRIPT_START
 
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
-        PRINT_FORMATTED_NOW "Não fou possivel ler 'tdm' no arquivo 'Config.ini'" 7000
+        PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
     ENDIF
 
     WHILE TRUE
