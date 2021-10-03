@@ -9,14 +9,21 @@ SCRIPT_START
 
     PRINT_FORMATTED_NOW "Hello World Working" 5000
 
+    // Read the variable tdm
+    // I don't know why I named the variable tdm
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
         PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
+        WAIT 7000
+        PRINT_FORMATTED_NOW "Desligando o script" 100
+        SCRIPT_END
     ENDIF
 
+    // Loop
     WHILE TRUE
         WAIT 0
 
+        // Show coord
         IF tdm = 1 
             WAIT 0
 
@@ -28,6 +35,7 @@ SCRIPT_START
             ENDWHILE
         ENDIF
 
+        // Count
         WHILE IS_KEY_PRESSED VK_KEY_T
             WAIT 0
 
@@ -48,11 +56,13 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "%i" 0001 (numero)
         ENDWHILE
 
+        // Life cheat
         IF TEST_CHEAT VIDA
             SET_CHAR_HEALTH scplayer 5000
             PRINT_FORMATTED_NOW "Vida regenerada!" 1000
         ENDIF
 
+        // AirBrake
         IF tdm = 2
             WHILE IS_KEY_PRESSED VK_TAB
                 WAIT 0
@@ -111,6 +121,7 @@ SCRIPT_START
             ENDWHILE
         ENDIF
 
+        // Shows the nearest street (the nearest car (It's the same thing))
         IF IS_KEY_PRESSED VK_END
             CLEO_CALL get_closest_road 0 (scplayer) (x y z)
             PRINT_FORMATTED_NOW "A coord da rua mais proxima eh: %.3f %.3f %.3f" 1 (x y z)
@@ -121,6 +132,7 @@ SCRIPT_START
 }
 SCRIPT_END
 
+// Get the nearest car
 {
     LVAR_INT char // In
 
