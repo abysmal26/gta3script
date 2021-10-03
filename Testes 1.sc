@@ -12,11 +12,12 @@ SCRIPT_START
     // Read the variable tdm
     // I don't know why I named the variable tdm
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
+    // If the variable tdm not read pause the script for 16 minuts
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
         PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
         WAIT 7000
         PRINT_FORMATTED_NOW "Desligando o script" 100
-        SCRIPT_END
+        WAIT 960000
     ENDIF
 
     // Loop
@@ -64,61 +65,11 @@ SCRIPT_START
 
         // AirBrake
         IF tdm = 2
-            WHILE IS_KEY_PRESSED VK_TAB
+            IF IS_KEY_PRESSED VK_TAB
                 WAIT 0
 
-                WHILE IS_KEY_PRESSED VK_KEY_W
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    y += 1.0
-                    z -= 1.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-
-                WHILE IS_KEY_PRESSED VK_KEY_S
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    y -= 1.0
-                    z -= 1.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-
-                WHILE IS_KEY_PRESSED VK_KEY_D
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    x += 1.0
-                    z -= 1.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-
-                WHILE IS_KEY_PRESSED VK_KEY_A
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    x -= 1.0
-                    z -= 1.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-
-                WHILE IS_KEY_PRESSED VK_KEY_E
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    z += 1.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-
-                WHILE IS_KEY_PRESSED VK_KEY_Q
-                    WAIT 0
-
-                    GET_CHAR_COORDINATES scplayer (x y z)
-                    z -= 2.0
-                    SET_CHAR_COORDINATES scplayer (x y z)
-                ENDWHILE
-            ENDWHILE
+                CLEO_CALL airbraketp 0 (scplayer)
+            ENDIF
         ENDIF
 
         // Shows the nearest street (the nearest car (It's the same thing))
@@ -128,6 +79,13 @@ SCRIPT_START
             DRAW_CORONA (x y z) (1.0) (CORONATYPE_SHINYSTAR, FLARETYPE_NONE) (255 0 0)
         ENDIF
 
+        // TP
+        IF TEST_CHEAT TP
+            GET_CHAR_COORDINATES scplayer (x y z)
+            PRINT_FORMATTED_NOW "Script ativado" 1000
+            WAIT 5000
+            SET_CHAR_COORDINATES scplayer (x y z)
+        ENDIF        
     ENDWHILE
 }
 SCRIPT_END
@@ -143,4 +101,65 @@ SCRIPT_END
     GET_CHAR_COORDINATES char (char_x char_y char_z)
     GET_CLOSEST_CAR_NODE (char_x char_y char_z) (node_x node_y node_z)
     CLEO_RETURN 0 (node_x node_y node_z)
+}
+
+// AirBrake TP
+{
+    LVAR_INT scplayer
+    LVAR_FLOAT x y z
+
+    airbraketp:
+    WHILE IS_KEY_PRESSED VK_KEY_W
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        y += 1.0
+        z -= 1.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    WHILE IS_KEY_PRESSED VK_KEY_S
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        y -= 1.0
+        z -= 1.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    WHILE IS_KEY_PRESSED VK_KEY_D
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        x += 1.0
+        z -= 1.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    WHILE IS_KEY_PRESSED VK_KEY_A
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        x -= 1.0
+        z -= 1.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    WHILE IS_KEY_PRESSED VK_KEY_E
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        z += 1.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    WHILE IS_KEY_PRESSED VK_KEY_Q
+        WAIT 0
+
+        GET_CHAR_COORDINATES scplayer (x y z)
+        z -= 2.0
+        SET_CHAR_COORDINATES scplayer (x y z)
+    ENDWHILE
+
+    CLEO_RETURN 0
 }
