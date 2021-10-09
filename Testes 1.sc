@@ -85,7 +85,7 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "Script ativado" 1000
             WAIT 5000
             SET_CHAR_COORDINATES scplayer (x y z)
-        ENDIF        
+        ENDIF
     ENDWHILE
 }
 SCRIPT_END
