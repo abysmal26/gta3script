@@ -1,2 +1,4 @@
 # .sc compilado
 *.cs
+# arquivo de configuração (algo pessoal)
+Config.ini
