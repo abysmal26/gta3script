@@ -9,14 +9,14 @@ SCRIPT_START
 
     PRINT_FORMATTED_NOW "Hello World Working" 5000
 
-    // Read the variable tdm
-    // I don't know why I named the variable tdm
+    // Le a variavel 'tdm'
+    // Eu não dei porque dei o nome de 'tdm' para variavel
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
-    // If the variable tdm not read pause the script for 16 minuts
+    // Se o script não conseguir ler a variavel 'tdm' ele para por 16 minutos
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
         PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
         WAIT 7000
-        PRINT_FORMATTED_NOW "Desligando o script" 100
+        PRINT_FORMATTED_NOW "Desligando o script" 7000
         WAIT 960000
     ENDIF
 
@@ -24,7 +24,7 @@ SCRIPT_START
     WHILE TRUE
         WAIT 0
 
-        // Show coord
+        // Mostrar cordenadas ao pressionar TAB (se a variavel 'tdm' for igual a 1)
         IF tdm = 1 
             WAIT 0
 
@@ -36,7 +36,7 @@ SCRIPT_START
             ENDWHILE
         ENDIF
 
-        // Count
+        // Aumenta e abaixa o numero segurando T e pressionando U ou J
         WHILE IS_KEY_PRESSED VK_KEY_T
             WAIT 0
 
@@ -57,13 +57,14 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "%i" 0001 (numero)
         ENDWHILE
 
-        // Life cheat
+        // Cheat de vida (digitando VIDA)
         IF TEST_CHEAT VIDA
             SET_CHAR_HEALTH scplayer 5000
             PRINT_FORMATTED_NOW "Vida regenerada!" 1000
         ENDIF
 
-        // AirBrake
+        // AirBrake ou NoClip (tanto faz) segurando TAB (se a variavel 'tdm' for igual a 2)
+        // Olha o codigo para ver os comandos direito
         IF tdm = 2
             IF IS_KEY_PRESSED VK_TAB
                 WAIT 0
@@ -72,14 +73,14 @@ SCRIPT_START
             ENDIF
         ENDIF
 
-        // Shows the nearest street (the nearest car (It's the same thing))
+        // Mostra a rua mais proxima ao pressionar END
         IF IS_KEY_PRESSED VK_END
             CLEO_CALL get_closest_road 0 (scplayer) (x y z)
             PRINT_FORMATTED_NOW "A coord da rua mais proxima eh: %.3f %.3f %.3f" 1 (x y z)
             DRAW_CORONA (x y z) (1.0) (CORONATYPE_SHINYSTAR, FLARETYPE_NONE) (255 0 0)
         ENDIF
 
-        // TP
+        // TP (apenas)
         IF TEST_CHEAT TP
             GET_CHAR_COORDINATES scplayer (x y z)
             PRINT_FORMATTED_NOW "Script ativado" 1000
@@ -90,7 +91,7 @@ SCRIPT_START
 }
 SCRIPT_END
 
-// Get the nearest car
+// Acha a rua mais proxima
 {
     LVAR_INT char // In
 
