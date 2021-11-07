@@ -2,8 +2,11 @@
 
 ### Download
 
-|[Release 1.0](https://github.com/RitzyVex/GTA3script/releases/tag/v1.0)|
+|[Release 1.0][release1]|
 |---|
 
 ### Coisas para fazer
 - [ ] Dar um nome melhor para o TP
+
+<!-- Links -->
+[release1]: https://github.com/RitzyVex/GTA3script/releases/tag/v1.0
