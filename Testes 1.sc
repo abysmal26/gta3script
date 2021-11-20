@@ -80,8 +80,8 @@ SCRIPT_START
             DRAW_CORONA (x y z) (1.0) (CORONATYPE_SHINYSTAR, FLARETYPE_NONE) (255 0 0)
         ENDIF
 
-        // TP (apenas)
-        IF TEST_CHEAT TP
+        // TimeBrake
+        IF TEST_CHEAT TB
             GET_CHAR_COORDINATES scplayer (x y z)
             PRINT_FORMATTED_NOW "Script ativado" 1000
             WAIT 5000
