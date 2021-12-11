@@ -1,4 +1,4 @@
-// Copyright RitzyDevelopment Global Group LLC 2021
+// Abysmal - abysmal26.github.io
 
 SCRIPT_START
 {
