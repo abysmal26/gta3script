@@ -1,4 +1,5 @@
 // Abysmal - abysmal26.github.io
+// HyPeRiS Group
 
 SCRIPT_START
 {
@@ -7,17 +8,17 @@ SCRIPT_START
 
     GET_PLAYER_CHAR 0 scplayer
 
-    PRINT_FORMATTED_NOW "Hello World Working" 5000
+    PRINT_FORMATTED_NOW "Testes 1 funcionando" 5000
 
     // Le a variavel 'tdm'
-    // Eu não dei porque dei o nome de 'tdm' para variavel
+    // Eu não sei porque dei o nome de 'tdm' para variavel
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
-    // Se o script não conseguir ler a variavel 'tdm' ele para por 16 minutos
+    // Se o script não conseguir ler a variavel 'tdm' ele para
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
         PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
         WAIT 7000
         PRINT_FORMATTED_NOW "Desligando o script" 7000
-        WAIT 960000
+        TERMINATE_THIS_CUSTOM_SCRIPT
     ENDIF
 
     // Loop

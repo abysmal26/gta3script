@@ -3,3 +3,6 @@ Config.ini
 
 # Arquivo compilado (esta disponivel na release)
 *.cs
+
+# Outro teste
+Testes 2.sc
