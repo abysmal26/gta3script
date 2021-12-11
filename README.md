@@ -2,7 +2,7 @@
 
 ### Download
 
-Faça o download com o método Share Mods para me ajudar
+Faça o download com o Share Mods para me ajudar
 
 | [Share Mods][sharemods] |
 |---|
