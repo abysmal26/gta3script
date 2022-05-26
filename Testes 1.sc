@@ -1,4 +1,4 @@
-// Abysmal - abysmal26.github.io
+// Abysmal - abysmal26.github.io - ayo.so/abysmal26
 // HyPeRiS Group
 
 SCRIPT_START
@@ -11,7 +11,6 @@ SCRIPT_START
     PRINT_FORMATTED_NOW "Testes 1 funcionando" 5000
 
     // Le a variavel 'tdm'
-    // Eu não sei porque dei o nome de 'tdm' para variavel
     READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
     // Se o script não conseguir ler a variavel 'tdm' ele para
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
@@ -25,7 +24,9 @@ SCRIPT_START
     WHILE TRUE
         WAIT 0
 
-        // Mostrar cordenadas ao pressionar TAB (se a variavel 'tdm' for igual a 1)
+        //! Só funciona se a varialvel 'tdm' for igual a 1
+        //* Mostra as cordenadas
+        // Só segurar TAB
         IF tdm = 1 
             WAIT 0
 
@@ -37,7 +38,10 @@ SCRIPT_START
             ENDWHILE
         ENDIF
 
-        // Aumenta e abaixa o numero segurando T e pressionando U ou J
+        //* Aumenta e abaixa o numero
+        // ↓↓↓ Segurando T ↓↓↓
+        // Pressionar U aumenta
+        // Pressionar J abaixa
         WHILE IS_KEY_PRESSED VK_KEY_T
             WAIT 0
 
@@ -58,14 +62,19 @@ SCRIPT_START
             PRINT_FORMATTED_NOW "%i" 0001 (numero)
         ENDWHILE
 
-        // Cheat de vida (digitando VIDA)
+        //* Cheat de vida
+        // Só digitar VIDA em qualquer momento do jogo
         IF TEST_CHEAT VIDA
             SET_CHAR_HEALTH scplayer 5000
             PRINT_FORMATTED_NOW "Vida regenerada!" 1000
         ENDIF
 
-        // AirBrake ou NoClip (tanto faz) segurando TAB (se a variavel 'tdm' for igual a 2)
-        // Olha o codigo para ver os comandos direito
+        //! Só funciona se a variavel 'tdm' for igual a 2
+        //* AirBrake/NoClip
+        // ↓↓↓ Segurando TAB ↓↓↓
+        // W vai para frente e S para tras
+        // A vai para a esquerda e D vai para direita
+        // E vai para a cima e Q vai para baixo
         IF tdm = 2
             IF IS_KEY_PRESSED VK_TAB
                 WAIT 0
@@ -74,17 +83,20 @@ SCRIPT_START
             ENDIF
         ENDIF
 
-        // Mostra a rua mais proxima ao pressionar END
+        //* Mostra a rua mais proxima
+        // Só pressionar END
         IF IS_KEY_PRESSED VK_END
             CLEO_CALL get_closest_road 0 (scplayer) (x y z)
             PRINT_FORMATTED_NOW "A coord da rua mais proxima eh: %.3f %.3f %.3f" 1 (x y z)
             DRAW_CORONA (x y z) (1.0) (CORONATYPE_SHINYSTAR, FLARETYPE_NONE) (255 0 0)
         ENDIF
 
-        // TimeBrake
+        //* TimeBrake
+        // Volta onde estava 5 segundos atras
+        // Só digitar TB em qualquer momento do jogo
         IF TEST_CHEAT TB
             GET_CHAR_COORDINATES scplayer (x y z)
-            PRINT_FORMATTED_NOW "Script ativado" 1000
+            PRINT_FORMATTED_NOW "TIMEBRAKE!" 1000
             WAIT 5000
             SET_CHAR_COORDINATES scplayer (x y z)
         ENDIF
@@ -105,7 +117,7 @@ SCRIPT_END
     CLEO_RETURN 0 (node_x node_y node_z)
 }
 
-// AirBrake TP
+// AirBrake/NoClip
 {
     LVAR_INT scplayer
     LVAR_FLOAT x y z
