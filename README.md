@@ -7,7 +7,7 @@ Faça o download pelo Share Mods para me ajudar
 | [Share Mods][sharemods] |
 |---|
 
-| [Release 1.0][release1] | [Direct][direct] |
+| [Release 1.1][release] | [Direct][direct] |
 |---|---|
 
 ### Instruções
@@ -41,8 +41,7 @@ Renomeie o arquivo `config.ini.example` para `config.ini` e o configure
 ### [**Licença**][license]
 
 <!-- Links -->
-[release1]: https://github.com/RitzyVex/GTA3script/releases/tag/v1.0
-[direct]: https://github.com/Abysmal26/GTA3script/releases/download/v1.0/GTA3script.7z
-[mirror]: http://pubdl.abysmal.unaux.com/GTA3script/GTA3script.7z
-[sharemods]: https://sharemods.com/5dqhggc9g5o1/GTA3script.7z.html
+[release]: https://github.com/abysmal26/gta3script/releases/tag/v1.1
+[direct]: https://github.com/abysmal26/gta3script/releases/download/v1.1/GTA3script.7z
+[sharemods]: https://sharemods.com/mdzgb77kqnmh/GTA3script.7z.html
 [license]: https://abysmal26.mit-license.org
