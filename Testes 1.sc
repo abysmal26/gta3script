@@ -11,12 +11,12 @@ SCRIPT_START
     PRINT_FORMATTED_NOW "Testes 1 funcionando" 5000
 
     // Le a variavel 'tdm'
-    READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
+    READ_INT_FROM_INI_FILE "config.ini" "config" "tdm" tdm
     // Se o script não conseguir ler a variavel 'tdm' ele para
     IF NOT READ_INT_FROM_INI_FILE "Config.ini" "config" "tdm" tdm
-        PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'Config.ini'" 7000
+        PRINT_FORMATTED_NOW "Não foi possivel ler 'tdm' no arquivo 'config.ini'" 7000
         WAIT 7000
-        PRINT_FORMATTED_NOW "Desligando o script" 7000
+        PRINT_FORMATTED_NOW "Parando o script" 7000
         TERMINATE_THIS_CUSTOM_SCRIPT
     ENDIF
 
@@ -25,7 +25,7 @@ SCRIPT_START
         WAIT 0
 
         //! Só funciona se a varialvel 'tdm' for igual a 1
-        //* Mostra as cordenadas
+        //* Mostra as coordenadas
         // Só segurar TAB
         IF tdm = 1 
             WAIT 0
@@ -39,9 +39,11 @@ SCRIPT_START
         ENDIF
 
         //* Aumenta e abaixa o numero
-        // ↓↓↓ Segurando T ↓↓↓
-        // Pressionar U aumenta
-        // Pressionar J abaixa
+        /*
+        ↓↓↓ Segurando T ↓↓↓
+        Pressionar U aumenta
+        Pressionar J abaixa
+         */
         WHILE IS_KEY_PRESSED VK_KEY_T
             WAIT 0
 
@@ -71,10 +73,12 @@ SCRIPT_START
 
         //! Só funciona se a variavel 'tdm' for igual a 2
         //* AirBrake/NoClip
-        // ↓↓↓ Segurando TAB ↓↓↓
-        // W vai para frente e S para tras
-        // A vai para a esquerda e D vai para direita
-        // E vai para a cima e Q vai para baixo
+        /*
+        ↓↓↓ Segurando TAB ↓↓↓
+        W vai para frente e S para tras
+        A vai para a esquerda e D para direita
+        E vai para a cima e Q para baixo
+        */
         IF tdm = 2
             IF IS_KEY_PRESSED VK_TAB
                 WAIT 0

@@ -1,8 +1,8 @@
 # Arquivo de configuração (algo pessoal)
-Config.ini
+config.ini
 
 # Arquivo compilado (esta disponivel na release)
 *.cs
 
-# Outro teste
-Testes 2.sc
+#. Todolist
+TODO

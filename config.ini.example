@@ -1,0 +1,2 @@
+[config]
+tdm = 1 ; 1 para ativar as coordenadas ou 2 para ativar o AirBrake/NoClip
